@@ -5,6 +5,7 @@ const path = require('path');
 
 // Initializations
 const app = express();
+require('./database');
 
 // Settings
 app.set('port', 3000);
@@ -21,6 +22,9 @@ const storage = multer.diskStorage({
 app.use(multer({storage}).single('image'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+
+// Routes
+app.use('/api/books',require('./routes/books'));
 
 // Server
 app.listen(app.get('port'), () =>{
