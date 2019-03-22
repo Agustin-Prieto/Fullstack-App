@@ -6,11 +6,11 @@ const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
     entry: "./frontend/app.js",
+    mode: 'development',
     output: {
         path: path.join(__dirname, 'backend/public'),
         filename: 'js/bundle.js'
     },
-
     module: {
         rules: [
             {
@@ -22,7 +22,6 @@ module.exports = {
             }
         ]
     },
-
     plugins: [
         new HtmlWebpackPlugin({
             template: './frontend/index.html',
@@ -35,11 +34,9 @@ module.exports = {
                 useShortDoctype: true
             }
         }),
-        
         new MiniCssExtractPlugin({
             filename: 'css/bundle.css'
         })
     ],
-
     devtool: 'source-map'
 }
